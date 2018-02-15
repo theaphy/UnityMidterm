@@ -9,7 +9,7 @@ public class InventorySlot : MonoBehaviour {
 	public Image icon;
 	public Button removeButton;
 
-	Item item;  // Current item in the slot
+	Item item;
 	#endregion
 
 	#region Methods
@@ -21,8 +21,6 @@ public class InventorySlot : MonoBehaviour {
 		icon.enabled = true;
 		removeButton.interactable = true;
 	}
-
-	// Clear the slot
 	public void ClearSlot()
 	{
 		item = null;
@@ -32,7 +30,6 @@ public class InventorySlot : MonoBehaviour {
 		removeButton.interactable = false;
 	}
 
-	// If the remove button is pressed, this function will be called.
 	public void RemoveItemFromInventory()
 	{
 		Inventory.instance.Remove(item);

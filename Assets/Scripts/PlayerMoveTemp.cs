@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMoveTemp : MonoBehaviour
 {
@@ -28,12 +29,16 @@ public class PlayerMoveTemp : MonoBehaviour
 
 	void Update()
 	{
-			if (Input.GetMouseButtonDown(0))
-			{
-				target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				target.z = transform.position.z;
-			}
-			transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+		if (EventSystem.current.IsPointerOverGameObject()) {
+			return;
 		}
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			target.z = transform.position.z;
+		}
+		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 	}
 	#endregion
+}

@@ -6,6 +6,8 @@ public class InventoryUI : MonoBehaviour {
 	#region Variables
 	public GameObject inventoryUI;  // The entire UI
 	public Transform itemsParent;   // The parent object of all the items
+	public GameObject inventoryScreen;
+	public GameObject inventoryButton;
 
 	Inventory inventory;    // Our current inventory
 
@@ -17,23 +19,17 @@ public class InventoryUI : MonoBehaviour {
 		inventory = Inventory.instance;
 		inventory.onItemChangedCallback += UpdateUI;
 	}
-
-	// Check to see if we should open/close the inventory
 	void Update()
 	{
-		if (Input.GetButtonDown("Inventory"))
+		if (inventoryScreen.active == true)
 		{
-			inventoryUI.SetActive(!inventoryUI.activeSelf);
+			
 			UpdateUI();
 		}
 	}
-
-	// Update the inventory UI by:
-	//		- Adding items
-	//		- Clearing empty slots
-	// This is called using a delegate on the Inventory.
 	public void UpdateUI()
 	{
+
 		InventorySlot[] slots = GetComponentsInChildren<InventorySlot>();
 
 		for (int i = 0; i < slots.Length; i++)
@@ -47,6 +43,15 @@ public class InventoryUI : MonoBehaviour {
 				slots[i].ClearSlot();
 			}
 		}
+	}
+
+	public void OpenInventory() {
+		inventoryButton.SetActive(false);
+		inventoryScreen.SetActive(true);
+	}
+	public void CloseInventory() {
+		inventoryButton.SetActive(true);
+		inventoryScreen.SetActive(false);
 	}
 
 	#endregion

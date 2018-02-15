@@ -8,7 +8,6 @@ public class CharacterStats : MonoBehaviour {
 	public Stat damage;
 	public Stat armor;
 
-	public event System.Action OnHealthReachedZero;
 	#endregion
 
 	#region Methods
@@ -17,30 +16,23 @@ public class CharacterStats : MonoBehaviour {
 		currentHealth = maxHealth.GetValue();
 	}
 
-	// Start with max HP.
 	public virtual void Start()
 	{
 
 	}
 
-	// Damage the character
+
 	public void TakeDamage(int damage)
 	{
-		// Subtract the armor value - Make sure damage doesn't go below 0.
 		damage -= armor.GetValue();
 		damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-		// Subtract damage from health
 		currentHealth -= damage;
 		Debug.Log(transform.name + " takes " + damage + " damage.");
 
-		// If we hit 0. Die.
 		if (currentHealth <= 0)
 		{
-			if (OnHealthReachedZero != null)
-			{
-				OnHealthReachedZero();
-			}
+			Die();
 		}
 	}
 
@@ -50,7 +42,9 @@ public class CharacterStats : MonoBehaviour {
 		currentHealth += amount;
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
 	}
-
+	public virtual void Die() {
+		//meant to be overwritten
+	}
 
 
 	#endregion
