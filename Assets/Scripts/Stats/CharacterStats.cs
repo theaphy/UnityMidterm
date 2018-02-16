@@ -8,6 +8,8 @@ public class CharacterStats : MonoBehaviour {
 	public Stat damage;
 	public Stat armor;
 
+	public event System.Action OnHealthReachedZero;
+
 	#endregion
 
 	#region Methods
@@ -32,7 +34,10 @@ public class CharacterStats : MonoBehaviour {
 
 		if (currentHealth <= 0)
 		{
-			Die();
+			if (OnHealthReachedZero != null)
+			{
+				OnHealthReachedZero();
+			}
 		}
 	}
 
@@ -41,9 +46,6 @@ public class CharacterStats : MonoBehaviour {
 	{
 		currentHealth += amount;
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
-	}
-	public virtual void Die() {
-		//meant to be overwritten
 	}
 
 
