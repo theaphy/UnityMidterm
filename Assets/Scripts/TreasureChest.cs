@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class TreasureChest : Interactable {
 
-	Animator animator;
 
 	bool isOpen;
 	public Item[] items;
-
-	void Start() {
-		animator = GetComponent<Animator> ();
-	}
 
 	public override void Interact ()
 	{
 		base.Interact ();
 		if (!isOpen) {
-			animator.SetTrigger ("Open");
 			StartCoroutine (CollectTreasure ());
 		}
 	}
