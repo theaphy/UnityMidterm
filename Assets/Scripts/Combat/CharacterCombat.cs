@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
-public class CharecterCombat : MonoBehaviour {
+public class CharacterCombat : MonoBehaviour {
 	#region Variables
 	public float attackRate = 1f;
 	private float attackCountdown = 0f;
@@ -48,7 +48,7 @@ public class CharecterCombat : MonoBehaviour {
 
 	IEnumerator DoDamage(CharacterStats stats, float delay)
 	{
-		print("Start");
+		//print("Start");
 		yield return new WaitForSeconds(delay);
 
 		Debug.Log(transform.name + " swings for " + myStats.damage.GetValue() + " damage");

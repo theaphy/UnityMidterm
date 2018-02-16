@@ -11,12 +11,9 @@ public class Interactable : MonoBehaviour {
 	#endregion
 
 	#region Methods
-	private void Start()
-	{
-		player = GameObject.FindGameObjectWithTag("Player").transform;
-	}
 	void Update()
 	{
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 		float distance = Vector3.Distance(player.position, interactionTransform.position);
 		if (distance <= radius)
 		{

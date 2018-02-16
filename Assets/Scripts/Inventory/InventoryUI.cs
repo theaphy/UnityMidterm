@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour {
 	}
 	void Update()
 	{
-		if (inventoryScreen.active == true)
+		if (inventoryScreen.activeSelf == true)
 		{
 			
 			UpdateUI();
