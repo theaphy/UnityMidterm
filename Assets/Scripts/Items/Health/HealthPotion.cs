@@ -9,14 +9,9 @@ public class HealthPotion : Item {
 	#endregion
 
 	#region Methods
-	//public void Start {
-		//characterStats = gameObject.GetComponent<CharacterStats>();
-	//}
-
 	public override void Use()
 	{
-		Debug.Log("Should Heal");
-		characterStats.Heal(healAmount);
+		HealthManager.instance.Heal(healAmount);
 		RemoveFromInventory();
 	}
 		#endregion
