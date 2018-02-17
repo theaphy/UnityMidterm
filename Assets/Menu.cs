@@ -16,13 +16,13 @@ public class Menu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameManager.state = GameManager.GameState.menu;
+		//GameManager.state = GameManager.GameState.menu;
 		PlayerPrefs.SetInt ("Level1", 1);
 
-		if (PlayerPrefs.HasKey("HighScore")) {
-			highScoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+		if (PlayerPrefs.HasKey("PlayerGold")) {
+			highScoreText.text = "Total Gold Collected: " + PlayerPrefs.GetInt("PlayerGold");
 		} else {
-			highScoreText.text = "High Score: " + 0;
+			highScoreText.text = "Total Gold Collected: " + 0;
 		}
 
 		globalHighScores = new int[] {0,0,0,0,0};
@@ -46,22 +46,22 @@ public class Menu : MonoBehaviour {
 		}
 
 		for (int i = 0; i < 5; i++) {
-			globalHighScores[i] = int.Parse(args.Snapshot.Child ("score" + i).Value.ToString());
+			globalHighScores[i] = int.Parse(args.Snapshot.Child ("gold" + i).Value.ToString());
 			Debug.Log ( i + globalHighScores [i] + " Gold" );
 		}
 
-		if (GameManager.lastScore > globalHighScores [3]) {
+		if (GameManager.instance.goldCount > globalHighScores [3]) {
 			for (int i = 0; i < 4; i++) {
-				if (GameManager.lastScore > globalHighScores [i]) {
+				if (GameManager.instance.goldCount > globalHighScores [i]) {
 					//shift scores after down
 					for (int j = 3; j > i; j--) {
 						globalHighScores [j] = globalHighScores [j - 1];
 					}
 					//set the calue at position i
-					globalHighScores [i] = GameManager.lastScore;
+					globalHighScores [i] = GameManager.instance.goldCount;
 
 					//reset so we dont push it twice
-					GameManager.lastScore=0;
+					GameManager.instance.goldCount=0;
 					//push these to firebase
 					UpdateValues ();
 					return;
@@ -73,7 +73,7 @@ public class Menu : MonoBehaviour {
 	void UpdateValues () {
 		for (int i = 0; i < 4; i++) {
 			FirebaseDatabase.DefaultInstance
-				.GetReference ("totalGoldScores").Child ("score" + i).SetValueAsync (globalHighScores [i]);
+				.GetReference ("totalGoldScores").Child ("gold" + i).SetValueAsync (globalHighScores [i]);
 		}
 
 

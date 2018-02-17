@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 15694985}
   - component: {fileID: 15694987}
   - component: {fileID: 15694986}
+  - component: {fileID: 15694988}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41657ed8c5308614ab0702e9a115cac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
 --- !u!61 &15694986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,6 +201,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &15694988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15694983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a2c59b12132cb4a9fffcf818726028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
 --- !u!1 &130196155
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +469,15 @@ Prefab:
     - target: {fileID: 1575980209604096, guid: 86c50c9b055f43c499ac9a75374c0578, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212262997193932726, guid: 86c50c9b055f43c499ac9a75374c0578,
+        type: 2}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784534357517054, guid: 86c50c9b055f43c499ac9a75374c0578, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 60871965038083304, guid: 86c50c9b055f43c499ac9a75374c0578, type: 2}
@@ -933,7 +954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1336986209
 MonoBehaviour:
   m_ObjectHideFlags: 0
