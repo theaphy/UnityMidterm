@@ -53,6 +53,7 @@ public class PlayerMoveTemp : MonoBehaviour
 			cameraX = Mathf.Round(Input.mousePosition.x/(1));
 
 			Debug.Log (cameraX);
+			Debug.Log (transform.position.x);
 
 
 		}
