@@ -33,15 +33,6 @@ public class GameManager : MonoBehaviour {
 
 	#region Methods
 	void Start() {
-		if (!PlayerPrefs.HasKey ("PlayerGold") || PlayerPrefs.GetInt ("PlayerGold") == 0) 
-		{
-			goldCount = 0;
-
-		} else {
-			goldCount = PlayerPrefs.GetInt ("PlayerGold");
-			Debug.Log (goldCount);
-		}
-
 
 		goldText.text = "" + goldCount;
 	}
