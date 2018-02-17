@@ -14,7 +14,7 @@ public class RatMovement : MonoBehaviour {
 	public bool inConeView;
 
 	Vector3 direction;
-	private float walkSpeed = 1f;
+	public float walkSpeed = 1f;
 	private int currentTarget;    
 	private Transform[] waypoints = null;
 
