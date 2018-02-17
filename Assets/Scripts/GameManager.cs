@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	#region Singleton
@@ -55,6 +56,18 @@ public class GameManager : MonoBehaviour {
 		PlayerPrefs.SetInt ("PlayerGold", goldCount);
 
 	}
-	
+
+
+	public void LoadNextLevel (string calledFrom) {
+		switch (calledFrom)
+		{
+		case "Alecs Level":
+			SceneManager.LoadScene ("Alecs Level");
+			break;
+		default:
+			Debug.Log ("Can't find level");
+			break;
+		}
+	}
 	#endregion
 }
