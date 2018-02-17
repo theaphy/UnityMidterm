@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class RatMovement : MonoBehaviour {
 
-	public float health;
-	public float dmgOutput;
-
 	private Transform playerTransform;
 
 	//FSM variables
@@ -42,8 +39,6 @@ public class RatMovement : MonoBehaviour {
 			point5
 		};
 
-		health = 50;
-
 	}
 
 	private void Update()
@@ -52,17 +47,13 @@ public class RatMovement : MonoBehaviour {
 		if (chasing)
 		{
 			direction = playerTransform.position - transform.position;
-			rotateRat();
+			//rotateRat();
 		}
 
 
 		if (!waiting)
 		{
 			transform.Translate(walkSpeed * direction * Time.deltaTime, Space.World);
-		}
-
-		if (health == 0) {
-			Death ();
 		}
 
 	}
@@ -92,14 +83,14 @@ public class RatMovement : MonoBehaviour {
 
 		// Load direction of next waypoint
 		direction = waypoints[currentTarget].position - transform.position;
-		rotateRat();
+		//rotateRat();
 	}
 
 	public void Chase()
 	{
 		// Load the direction of player
 		direction = playerTransform.position - transform.position;
-		rotateRat();
+		//rotateRat();
 	}
 
 	public void StopChasing()
@@ -107,12 +98,12 @@ public class RatMovement : MonoBehaviour {
 		chasing = false;
 	}
 
-	private void rotateRat()
-	{
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-		direction = direction.normalized;
-	}
+	//private void rotateRat()
+	//{
+	//	float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+	//	transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+	//	direction = direction.normalized;
+	//}
 
 	public void StartChasing()
 	{
@@ -123,11 +114,6 @@ public class RatMovement : MonoBehaviour {
 	public void ToggleWaiting()
 	{
 		waiting  = !waiting;
-	}
-
-	public void Death ()
-	{
-		Object.Destroy(gameObject);
 	}
 
 }
