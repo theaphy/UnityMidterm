@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "149538771548",
+    "firebase_url": "https://the-eye-of-gruumsh.firebaseio.com",
+    "project_id": "the-eye-of-gruumsh",
+    "storage_bucket": "the-eye-of-gruumsh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149538771548:android:63326e56f02f3d0e",
+        "android_client_info": {
+          "package_name": "com.gruumsh.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149538771548-c43t35d0hrgtvo7ucd5r6d1lhnuo3kvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk5oOTfyM8q8MCWYNkEoisWXYCVRTBoX0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
