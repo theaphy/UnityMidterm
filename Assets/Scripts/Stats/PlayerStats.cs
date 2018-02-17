@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : CharacterStats
 {
 	#region Variables
-
+	CharacterStats stats;
+	public PlayerStats playerStats;
 	#endregion
 
 	#region Methods
 	public override void Start()
 	{
-
+		stats = GetComponent<CharacterStats>();
+		stats.OnHealthReachedZero += Die;
 		base.Start();
 		EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
 	}
@@ -31,6 +33,11 @@ public class PlayerStats : CharacterStats
 			damage.RemoveModifier(oldItem.armorModifier);
 		}
 
+	}
+	void Die()
+	{
+		Debug.Log("Character Died");
+		//Destroy(gameObject);
 	}
 	#endregion
 }
