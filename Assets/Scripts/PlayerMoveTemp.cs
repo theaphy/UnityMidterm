@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class PlayerMoveTemp : MonoBehaviour
 {
 	#region Variables
@@ -54,5 +55,6 @@ public class PlayerMoveTemp : MonoBehaviour
 		}
 		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 	}
+		
 	#endregion
 }
