@@ -52,11 +52,14 @@ public class GameManager : MonoBehaviour {
 	public void LoadNextLevel (string calledFrom) {
 		switch (calledFrom)
 		{
-		case "Alecs Level":
+		case "Tim Level":
 			SceneManager.LoadScene ("Alecs Level");
 			break;
+		case "Alecs Level":
+			SceneManager.LoadScene ("Level3");
+			break;
 		default:
-			Debug.Log ("Can't find level");
+			Debug.Log ("Can't find level dum dum");
 			break;
 		}
 	}
