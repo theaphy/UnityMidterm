@@ -8,6 +8,12 @@ public class PlayerMoveTemp : MonoBehaviour
 	#region Variables
 	public float moveSpeed;
 	private Vector3 target;
+
+	private float playerX;
+	private float playerY;
+
+	private float cameraX;
+	private float cameraY;
 	#endregion
 
 	#region Methods
@@ -15,6 +21,12 @@ public class PlayerMoveTemp : MonoBehaviour
 	void Start()
 	{
 		target = transform.position;
+
+		playerX = Mathf.Round(transform.position.x/(1));
+		playerY = Mathf.Round(transform.position.y/(1));
+
+		Debug.Log (playerX);
+		Debug.Log (playerY);
 	}
 
 	//	void Update () {
@@ -37,6 +49,13 @@ public class PlayerMoveTemp : MonoBehaviour
 		{
 			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			target.z = transform.position.z;
+			playerX = Mathf.Round(transform.position.x/(1));
+			cameraX = Mathf.Round(Input.mousePosition.x/(1));
+
+			Debug.Log (cameraX);
+			Debug.Log (transform.position.x);
+
+
 		}
 		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 	}
