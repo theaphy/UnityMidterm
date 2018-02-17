@@ -9,6 +9,8 @@ public class PlayerMoveTemp : MonoBehaviour
 	public float moveSpeed;
 	private Vector3 target;
 
+	public GameObject clickIndicate;
+
 	private float playerX;
 	private float playerY;
 
@@ -22,11 +24,9 @@ public class PlayerMoveTemp : MonoBehaviour
 	{
 		target = transform.position;
 
-		playerX = Mathf.Round(transform.position.x/(1));
-		playerY = Mathf.Round(transform.position.y/(1));
+		//playerX = Mathf.Round(transform.position.x/(1));
+		//playerY = Mathf.Round(transform.position.y/(1));
 
-		Debug.Log (playerX);
-		Debug.Log (playerY);
 	}
 
 	//	void Update () {
@@ -49,13 +49,8 @@ public class PlayerMoveTemp : MonoBehaviour
 		{
 			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			target.z = transform.position.z;
-			playerX = Mathf.Round(transform.position.x/(1));
-			cameraX = Mathf.Round(Input.mousePosition.x/(1));
 
-			Debug.Log (cameraX);
-			Debug.Log (transform.position.x);
-
-
+			Instantiate (clickIndicate, target, Quaternion.identity);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 	}
