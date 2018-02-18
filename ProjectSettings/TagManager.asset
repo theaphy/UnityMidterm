@@ -9,6 +9,7 @@ TagManager:
   - pt3
   - pt4
   - pt5
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 

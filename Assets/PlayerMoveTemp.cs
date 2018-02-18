@@ -42,7 +42,8 @@ public class PlayerMoveTemp : MonoBehaviour
 
 	void Update()
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) {
+		if (EventSystem.current.IsPointerOverGameObject())
+		{
 			return;
 		}
 
@@ -51,10 +52,10 @@ public class PlayerMoveTemp : MonoBehaviour
 			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			target.z = transform.position.z;
 
-			Instantiate (clickIndicate, target, Quaternion.identity);
+			Instantiate(clickIndicate, target, Quaternion.identity);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 	}
-		
+
 	#endregion
 }

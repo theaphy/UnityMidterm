@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour {
 
+	#region Singleton
 	public static PlayerAnimationManager instance
 	{
 		get
@@ -21,6 +22,8 @@ public class PlayerAnimationManager : MonoBehaviour {
 	{
 		_instance = this;
 	}
+	#endregion
+
 	#region Variables
 
 	#endregion

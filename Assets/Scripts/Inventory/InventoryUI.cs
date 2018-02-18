@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour {
 	public GameObject inventoryScreen;
 	public GameObject inventoryButton;
 
+
 	Inventory inventory;    // Our current inventory
 
 	#endregion
