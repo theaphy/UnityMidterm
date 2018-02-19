@@ -10,12 +10,16 @@ public class HealthUI : MonoBehaviour {
 	public RectTransform healthSlider;
 	public GameObject graphic;
 
+
 	Transform cam;
 	Transform target;
 	CharacterStats stats;
 
+
 	float healthPercentOld;
 	float lastHealthChangeTime;
+
+
 
 	public void Init(Transform target, CharacterStats stats) {
 		this.target = target;
@@ -27,6 +31,7 @@ public class HealthUI : MonoBehaviour {
 	}
 
 	void LateUpdate () {
+		
 		if (target == null) {
 			Destroy (gameObject);
 			return;
@@ -37,10 +42,11 @@ public class HealthUI : MonoBehaviour {
 		float healthPercent = GetHealthPercent ();
 		healthSlider.localScale = new Vector3 (healthPercent, 1, 1);
 
+
 		if (!Mathf.Approximately (healthPercent, healthPercentOld)) {
-			healthPercentOld = healthPercent;
-			lastHealthChangeTime = Time.time;
-			graphic.SetActive (true);
+		healthPercentOld = healthPercent;
+		lastHealthChangeTime = Time.time;
+		graphic.SetActive (true);
 		}
 
 		if (graphic.activeSelf) {

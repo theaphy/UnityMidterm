@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class TreasureChest : Interactable {
 
+	Animator animator;
 
 	bool isOpen;
 	public Item[] items;
+
+	void Start()
+	{
+		animator = GetComponent<Animator>();
+	}
 
 	public override void Interact ()
 	{
 		base.Interact ();
 		if (!isOpen) {
+			animator.SetTrigger("Open");
 			StartCoroutine (CollectTreasure ());
 		}
 	}
@@ -22,6 +29,7 @@ public class TreasureChest : Interactable {
 
 		yield return new WaitForSeconds (1f);
 		print ("Chest opened");
+		animator.SetTrigger("Opened");
 		foreach (Item i in items) {
 			Inventory.instance.Add (i);
 		}

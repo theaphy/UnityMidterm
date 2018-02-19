@@ -10,6 +10,8 @@ TagManager:
   - pt4
   - pt5
   - Wall
+  - Weapon
+  - Boss
   layers:
   - Default
   - TransparentFX

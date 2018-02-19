@@ -4,6 +4,7 @@ public class CharacterStats : MonoBehaviour {
 	#region Variables
 	public Stat maxHealth;          // Maximum amount of health
 	public int currentHealth { get; protected set; }    // Current amount of health
+	public int currentDamage { get; protected set; }    // Current amount of damage
 
 	public Stat damage;
 	public Stat armor;
@@ -15,6 +16,7 @@ public class CharacterStats : MonoBehaviour {
 	#region Methods
 	public virtual void Awake()
 	{
+		currentDamage = damage.GetValue();
 		currentHealth = maxHealth.GetValue();
 	}
 
@@ -47,7 +49,10 @@ public class CharacterStats : MonoBehaviour {
 		currentHealth += amount;
 		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
 	}
-
+	public void decreaseDamage(int amount)
+	{
+		currentDamage += amount;
+	}
 
 	#endregion
 }

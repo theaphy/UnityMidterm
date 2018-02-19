@@ -32,10 +32,9 @@ public class EquipmentManager : MonoBehaviour {
 	Equipment[] currentEquipment;
 	SkinnedMeshRenderer[] currentMeshes;
 
-	public SkinnedMeshRenderer targetMesh;
-
 	public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
 	public event OnEquipmentChanged onEquipmentChanged;
+	public SpriteRenderer weaponSpriteRenderer;
 
 	Inventory inventory;
 	#endregion
@@ -43,6 +42,7 @@ public class EquipmentManager : MonoBehaviour {
 #region Methods
 	void Start ()
 	{
+		weaponSpriteRenderer = GameObject.FindGameObjectWithTag("Weapon").gameObject.GetComponent<SpriteRenderer>();
 		inventory = Inventory.instance;
 
 		int numSlots = System.Enum.GetNames (typeof(EquipmentSlot)).Length;
@@ -78,6 +78,7 @@ public class EquipmentManager : MonoBehaviour {
 			onEquipmentChanged.Invoke(newItem, oldItem);
 
 		currentEquipment [slotIndex] = newItem;
+		weaponSpriteRenderer.sprite = newItem.icon;
 		Debug.Log(newItem.name + " equipped!");
 
 	}
