@@ -33,8 +33,10 @@ public class GameManager : MonoBehaviour {
 
 	#region Methods
 	void Start() {
-
+		
 		goldText.text = "" + goldCount;
+
+
 	}
 	
 	void Update () {

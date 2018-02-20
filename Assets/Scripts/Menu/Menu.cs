@@ -6,6 +6,7 @@ using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
 
+
 public class Menu : MonoBehaviour {
 	public Text highScoreText;
 	public DatabaseReference reference;
@@ -16,11 +17,11 @@ public class Menu : MonoBehaviour {
 	public Button showBtn;
 	public Button hideBtn;
 
-
 	// Use this for initialization
 	void Start () {
 		//GameManager.state = GameManager.GameState.menu;
 		//PlayerPrefs.SetInt ("Level1", 1);
+
 
 		if (PlayerPrefs.HasKey("PlayerGold")) {
 			highScoreText.text = "Total Gold Collected: " + PlayerPrefs.GetInt("PlayerGold");
