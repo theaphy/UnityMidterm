@@ -29,18 +29,37 @@ public class GameManager : MonoBehaviour {
 	#region Variables
 	public int goldCount = 0;
 	public Text goldText;
+	public static int lives = 3;
+	public GameObject deathScreen;
+	public GameObject slainby;
+	public GameObject Continue;
+	public GameObject yesPanel;
+	public GameObject NoPanel;
+	public GameObject returnToMenu;
+	public GameObject returnToMenuButton;
+	public static GameObject player;
+	public bool died = false;
+
 	#endregion
 
 	#region Methods
 	void Start() {
-		
+		player = GameObject.FindGameObjectWithTag("Player");
+
 		goldText.text = "" + goldCount;
 
 
 	}
 	
-	void Update () {
-		
+	public void Respawn () {
+		deathScreen.SetActive(false);
+		slainby.SetActive(false);
+		returnToMenu.SetActive(false);
+		returnToMenuButton.SetActive(false);
+		Continue.SetActive(false);
+		yesPanel.SetActive(false);
+		NoPanel.SetActive(false);
+		player.SendMessage("Respawn");
 	}
 	public void AddGold(int goldAmount) {
 		goldCount += goldAmount;
@@ -63,6 +82,34 @@ public class GameManager : MonoBehaviour {
 		default:
 			SceneManager.LoadScene ("Tim Level");
 			break;
+		}
+	}
+	public void LoadMenu() {
+		SceneManager.LoadScene("Menu");
+	}
+	public void DecreaseLivesOnlyOnce() {
+		died = true;
+	}
+	public void Death() {
+		if (died == true) {
+			lives--;
+			died = false;
+		}
+		if (lives <= 0)
+		{
+			deathScreen.SetActive(true);
+			slainby.SetActive(true);
+			returnToMenu.SetActive(true);
+			returnToMenuButton.SetActive(true);
+			
+		}
+		else
+		{
+			deathScreen.SetActive(true);
+			slainby.SetActive(true);
+			Continue.SetActive(true);
+			yesPanel.SetActive(true);
+			NoPanel.SetActive(true);
 		}
 	}
 	#endregion

@@ -41,6 +41,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1336716090120652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4305731012725814}
+  m_Layer: 0
+  m_Name: damageIndicatorPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1681559146594354
 GameObject:
   m_ObjectHideFlags: 1
@@ -79,6 +94,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4305731012725814
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336716090120652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4534904311284802}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4420864491128172
 Transform:
   m_ObjectHideFlags: 1
@@ -86,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156079800035194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.82, z: 0}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534904311284802}
@@ -99,11 +127,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938972922516216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6400003, y: 2, z: -1}
+  m_LocalPosition: {x: 4.605441, y: -2.5486255, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4691874868357986}
   - {fileID: 4420864491128172}
+  - {fileID: 4305731012725814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,7 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   interactionTransform: {fileID: 4534904311284802}
-  gold: {fileID: 1323205702611720, guid: 2d68aa1cc8ec45b469819827c951c5fd, type: 2}
+  gold: {fileID: 1598554405622926, guid: 9304f1f76d10b3b4d9a2de5748fca693, type: 2}
 --- !u!114 &114801679407833874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +239,7 @@ MonoBehaviour:
     baseValue: 5
   armor:
     baseValue: 0
+  damgeIndicator: {fileID: 0}
 --- !u!114 &114850785049611466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +278,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 1
   healthBarPos: {fileID: 4420864491128172}
+  damageIndicatorPos: {fileID: 4305731012725814}
+  slash: {fileID: 1829440288550146, guid: 93eab8b5de286c248afd5394f1dab480, type: 2}
+  createdDamageIndicator: 0
 --- !u!212 &212903713911066504
 SpriteRenderer:
   m_ObjectHideFlags: 1

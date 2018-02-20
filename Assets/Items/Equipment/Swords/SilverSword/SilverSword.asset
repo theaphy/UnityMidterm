@@ -15,5 +15,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: baa0611269ba96b48875ed9873a90d9c, type: 3}
   showInInventory: 1
   equipSlot: 3
-  armorModifier: 8
+  armorModifier: 0
   damageModifier: 8

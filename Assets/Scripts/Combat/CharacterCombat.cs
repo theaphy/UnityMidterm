@@ -11,6 +11,9 @@ public class CharacterCombat : MonoBehaviour {
 	public event System.Action OnAttack;
 
 	public Transform healthBarPos;
+	public Transform damageIndicatorPos;
+	public GameObject slash;
+	public bool createdDamageIndicator = false;
 
 	CharacterStats myStats;
 	CharacterStats enemyStats;
@@ -22,6 +25,11 @@ public class CharacterCombat : MonoBehaviour {
 	{
 		myStats = GetComponent<CharacterStats>();
 		HealthUIManager.instance.Create(healthBarPos, myStats);
+		if (damageIndicatorPos != null) {
+			DamageUIManager.instance.Create(damageIndicatorPos, myStats);
+		}
+		
+
 	}
 
 	void Update()
@@ -31,6 +39,7 @@ public class CharacterCombat : MonoBehaviour {
 
 	public void Attack(CharacterStats enemyStats)
 	{
+		
 		if (attackCountdown <= 0f)
 		{
 			this.enemyStats = enemyStats;
@@ -46,6 +55,7 @@ public class CharacterCombat : MonoBehaviour {
 	}
 
 
+
 	IEnumerator DoDamage(CharacterStats stats, float delay)
 	{
 		//print("Start");
@@ -53,6 +63,13 @@ public class CharacterCombat : MonoBehaviour {
 
 		Debug.Log(transform.name + " swings for " + myStats.damage.GetValue() + " damage");
 		enemyStats.TakeDamage(myStats.damage.GetValue());
+		Vector3 spawnpoint = new Vector3(enemyStats.gameObject.transform.position.x, enemyStats.gameObject.transform.position.y, enemyStats.gameObject.transform.position.z - 1);
+		if (slash != null) {
+			GameObject childObject = Instantiate(slash, spawnpoint, Quaternion.identity) as GameObject;
+			childObject.transform.localScale = enemyStats.gameObject.transform.localScale;
+			childObject.transform.SetParent(enemyStats.gameObject.transform);
+		}
+
 
 
 

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
 	#region Variables
 	CharacterStats stats;
 	public PlayerStats playerStats;
+	public bool readyToDie = true;
+
 	#endregion
 
 	#region Methods
@@ -34,9 +37,22 @@ public class PlayerStats : CharacterStats
 		}
 
 	}
+	public void SetReadyToDie(int yes) {
+		if (yes == 1) {
+			readyToDie = true;
+		}
+		
+	}
 	void Die()
 	{
-		Debug.Log("Character Died");
+		if (readyToDie == true) {
+			GameManager.instance.DecreaseLivesOnlyOnce();
+			GameManager.instance.Death();
+			Debug.Log("Character Died");
+			readyToDie = false;
+		}
+
+		
 		//Destroy(gameObject);
 	}
 	#endregion

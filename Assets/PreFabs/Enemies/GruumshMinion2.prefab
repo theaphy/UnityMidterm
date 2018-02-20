@@ -42,8 +42,24 @@ GameObject:
   - component: {fileID: 114584334294762572}
   - component: {fileID: 114887462179632386}
   - component: {fileID: 114470573010831996}
+  - component: {fileID: 114579800104901774}
   m_Layer: 0
   m_Name: GruumshMinion2
+  m_TagString: Minions
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1640503083465572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4283868394121696}
+  m_Layer: 0
+  m_Name: damageIndicatorPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,13 +102,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477471420191732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.64, y: -2, z: -1}
+  m_LocalPosition: {x: 2.0069892, y: 3.8276033, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4904751398994690}
   - {fileID: 4686364656878226}
+  - {fileID: 4283868394121696}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4283868394121696
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640503083465572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4038297565812294}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4605705244240228
 Transform:
@@ -160,7 +190,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477471420191732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -192,6 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 1
   healthBarPos: {fileID: 4686364656878226}
+  damageIndicatorPos: {fileID: 4283868394121696}
+  slash: {fileID: 1829440288550146, guid: 93eab8b5de286c248afd5394f1dab480, type: 2}
+  createdDamageIndicator: 0
 --- !u!114 &114470573010831996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +238,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0, b: 0, a: 0.466}
   spriteRenderer: {fileID: 212694771167894218}
+--- !u!114 &114579800104901774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477471420191732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b786547e4fa0e5498e358c9956aa5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 5
 --- !u!114 &114584334294762572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,11 +277,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 10
+    baseValue: 50
   damage:
-    baseValue: 5
+    baseValue: 65
   armor:
     baseValue: 0
+  damgeIndicator: {fileID: 0}
 --- !u!114 &114887462179632386
 MonoBehaviour:
   m_ObjectHideFlags: 1

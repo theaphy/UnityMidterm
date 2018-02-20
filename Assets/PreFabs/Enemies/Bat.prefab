@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1080502483596494}
   m_IsPrefabParent: 1
+--- !u!1 &1005068028881938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4568393521849952}
+  m_Layer: 0
+  m_Name: damageIndicatorPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1080502483596494
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172921898094788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0}
+  m_LocalPosition: {x: 0, y: 0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4269789136440748}
@@ -100,11 +115,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1080502483596494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.64, y: 0, z: -1}
+  m_LocalPosition: {x: 4.44, y: -2.51, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4695578046537092}
   - {fileID: 4214508901163542}
+  - {fileID: 4568393521849952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -120,6 +136,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4695578046537092}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4568393521849952
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005068028881938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4269789136440748}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695578046537092
 Transform:
@@ -206,6 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRate: 1
   healthBarPos: {fileID: 4214508901163542}
+  damageIndicatorPos: {fileID: 4568393521849952}
+  slash: {fileID: 1829440288550146, guid: 93eab8b5de286c248afd5394f1dab480, type: 2}
 --- !u!114 &114439716497073642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +254,7 @@ MonoBehaviour:
     baseValue: 5
   armor:
     baseValue: 0
+  damgeIndicator: {fileID: 0}
 --- !u!114 &114572762401688738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inConeView: 0
+  walkSpeed: 1
 --- !u!114 &114816063650761152
 MonoBehaviour:
   m_ObjectHideFlags: 1

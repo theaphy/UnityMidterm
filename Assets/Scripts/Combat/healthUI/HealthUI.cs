@@ -31,7 +31,6 @@ public class HealthUI : MonoBehaviour {
 	}
 
 	void LateUpdate () {
-		
 		if (target == null) {
 			Destroy (gameObject);
 			return;

@@ -12,6 +12,9 @@ TagManager:
   - Wall
   - Weapon
   - Boss
+  - Helmet
+  - Legs
+  - Minions
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour {
 	#region Variables
@@ -8,6 +9,8 @@ public class CharacterStats : MonoBehaviour {
 
 	public Stat damage;
 	public Stat armor;
+
+	public Text damgeIndicator;
 
 	public event System.Action OnHealthReachedZero;
 
@@ -31,8 +34,10 @@ public class CharacterStats : MonoBehaviour {
 		damage -= armor.GetValue();
 		damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
+		//damgeIndicator.text = ("- " + damage);
+
 		currentHealth -= damage;
-		Debug.Log(transform.name + " takes " + damage + " damage.");
+		//Debug.Log(transform.name + " takes " + damage + " damage.");
 
 		if (currentHealth <= 0)
 		{
