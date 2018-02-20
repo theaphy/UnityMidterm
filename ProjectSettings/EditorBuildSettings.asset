@@ -11,3 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alecs Level.unity
     guid: ee8293b7a2fb7d54ca01d69860e324ab
+  - enabled: 1
+    path: Assets/Scenes/BossLevel.unity
+    guid: 3f835a44c6866bd459849e027d1828fa
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: bd38095df2812b543a9797b1efe981f1
+  - enabled: 1
+    path: Assets/Scenes/Tim Level.unity
+    guid: 66367a381571b4bc984f921b55d6f27b

@@ -17,7 +17,7 @@ public class GoldPickup : Interactable
 	}
 	void PickUp()
 	{
-		GameManager.instance.AddGold(1);
+		GameManager.instance.AddGold(7);//1 
 		Destroy(gameObject);
 	}
 	#endregion

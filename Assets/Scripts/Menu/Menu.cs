@@ -13,11 +13,14 @@ public class Menu : MonoBehaviour {
 	public GameObject highScoreTable;
 	public Text[] scoreTexts;
 
+	public Button showBtn;
+	public Button hideBtn;
+
 
 	// Use this for initialization
 	void Start () {
 		//GameManager.state = GameManager.GameState.menu;
-		PlayerPrefs.SetInt ("Level1", 1);
+		//PlayerPrefs.SetInt ("Level1", 1);
 
 		if (PlayerPrefs.HasKey("PlayerGold")) {
 			highScoreText.text = "Total Gold Collected: " + PlayerPrefs.GetInt("PlayerGold");
@@ -46,15 +49,17 @@ public class Menu : MonoBehaviour {
 		}
 
 		for (int i = 0; i < 5; i++) {
-			globalHighScores[i] = int.Parse(args.Snapshot.Child ("gold" + i).Value.ToString());
+			globalHighScores[i] = int.Parse(args.Snapshot.Child ("score" + i).Value.ToString());
 			Debug.Log ( i + globalHighScores [i] + " Gold" );
+
 		}
 
-		if (GameManager.instance.goldCount > globalHighScores [3]) {
-			for (int i = 0; i < 4; i++) {
+
+		if (GameManager.instance.goldCount > globalHighScores [4]) {
+			for (int i = 0; i < 5; i++) {
 				if (GameManager.instance.goldCount > globalHighScores [i]) {
 					//shift scores after down
-					for (int j = 3; j > i; j--) {
+					for (int j = 4; j > i; j--) {
 						globalHighScores [j] = globalHighScores [j - 1];
 					}
 					//set the calue at position i
@@ -71,9 +76,9 @@ public class Menu : MonoBehaviour {
 
 	}
 	void UpdateValues () {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			FirebaseDatabase.DefaultInstance
-				.GetReference ("totalGoldScores").Child ("gold" + i).SetValueAsync (globalHighScores [i]);
+				.GetReference ("totalGoldScores").Child ("score" + i).SetValueAsync (globalHighScores [i]);
 		}
 
 
@@ -81,8 +86,18 @@ public class Menu : MonoBehaviour {
 	}
 	void DisplayScores() {
 		highScoreTable.SetActive (true);
-		for (int i = 0; i < 4; i++) {
+
+		for (int i = 0; i < 5; i++) {
 			scoreTexts [i].text = "" + globalHighScores [i];
 		}
+			
+		showBtn.gameObject.SetActive (false);
+			
+
+	}
+	void HideScores() {
+		highScoreTable.SetActive (false);
+		showBtn.gameObject.SetActive (true);
+
 	}
 }

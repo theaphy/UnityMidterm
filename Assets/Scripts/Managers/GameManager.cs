@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadScene ("Level3");
 			break;
 		default:
-			Debug.Log ("Can't find level dum dum");
+			SceneManager.LoadScene ("Tim Level");
 			break;
 		}
 	}
