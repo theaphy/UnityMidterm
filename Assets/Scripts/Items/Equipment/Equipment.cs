@@ -16,4 +16,4 @@ public class Equipment : Item {
 	}
 	#endregion
 }
-public enum EquipmentSlot { Head, Chest, Legs, Weapon, Shield }
+public enum EquipmentSlot { Head, Chest, Legs, Weapon }

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4086884684177070}
   m_Layer: 0
-  m_Name: GM health target
+  m_Name: damageIndicatorPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,8 +41,24 @@ GameObject:
   - component: {fileID: 114937723690030544}
   - component: {fileID: 114792970283918080}
   - component: {fileID: 114955147731339662}
+  - component: {fileID: 114413993484837366}
   m_Layer: 0
   m_Name: GruumshMinion
+  m_TagString: Minions
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1719770235001750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4354718019081866}
+  m_Layer: 0
+  m_Name: GM health target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,12 +101,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1324468341412668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4705153373538972}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4298303947697086
 Transform:
@@ -105,6 +121,19 @@ Transform:
   m_Father: {fileID: 4980086473069306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4354718019081866
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719770235001750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4705153373538972}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4705153373538972
 Transform:
   m_ObjectHideFlags: 1
@@ -112,10 +141,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685111553484986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.64, y: 1, z: -1}
+  m_LocalPosition: {x: 6.38, y: 3.7, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4980086473069306}
+  - {fileID: 4354718019081866}
   - {fileID: 4086884684177070}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -160,7 +190,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685111553484986}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -191,11 +221,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 10
+    baseValue: 100
   damage:
-    baseValue: 5
+    baseValue: 50
   armor:
     baseValue: 0
+  damgeIndicator: {fileID: 0}
+--- !u!114 &114413993484837366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685111553484986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b786547e4fa0e5498e358c9956aa5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 5
 --- !u!114 &114792970283918080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +264,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  healthBarPos: {fileID: 4086884684177070}
+  healthBarPos: {fileID: 4354718019081866}
+  damageIndicatorPos: {fileID: 4086884684177070}
+  slash: {fileID: 1829440288550146, guid: 93eab8b5de286c248afd5394f1dab480, type: 2}
+  createdDamageIndicator: 0
 --- !u!114 &114937723690030544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   interactionTransform: {fileID: 4705153373538972}
-  gold: {fileID: 1323205702611720, guid: 2d68aa1cc8ec45b469819827c951c5fd, type: 2}
+  gold: {fileID: 0}
 --- !u!114 &114955147731339662
 MonoBehaviour:
   m_ObjectHideFlags: 1

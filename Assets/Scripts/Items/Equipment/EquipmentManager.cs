@@ -30,11 +30,12 @@ public class EquipmentManager : MonoBehaviour {
 	public Equipment[] defaultWear;
 
 	Equipment[] currentEquipment;
-	SkinnedMeshRenderer[] currentMeshes;
 
 	public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
 	public event OnEquipmentChanged onEquipmentChanged;
 	public SpriteRenderer weaponSpriteRenderer;
+	public SpriteRenderer helmetSpriteRenderer;
+	public SpriteRenderer legsSpriteRenderer;
 
 	Inventory inventory;
 	#endregion
@@ -43,11 +44,13 @@ public class EquipmentManager : MonoBehaviour {
 	void Start ()
 	{
 		weaponSpriteRenderer = GameObject.FindGameObjectWithTag("Weapon").gameObject.GetComponent<SpriteRenderer>();
+		helmetSpriteRenderer = GameObject.FindGameObjectWithTag("Helmet").gameObject.GetComponent<SpriteRenderer>();
+		legsSpriteRenderer = GameObject.FindGameObjectWithTag("Legs").gameObject.GetComponent<SpriteRenderer>();
 		inventory = Inventory.instance;
 
 		int numSlots = System.Enum.GetNames (typeof(EquipmentSlot)).Length;
 		currentEquipment = new Equipment[numSlots];
-		currentMeshes = new SkinnedMeshRenderer[numSlots];
+		EquipAllDefault();
 
 	}
 
@@ -67,6 +70,18 @@ public class EquipmentManager : MonoBehaviour {
 	{
 		Equipment oldItem = null;
 		int slotIndex = (int)newItem.equipSlot;
+		//Debug.Log("items Slot index is " + currentEquipment[slotIndex]);
+		if (slotIndex == 3) {
+			weaponSpriteRenderer.sprite = newItem.icon;
+		}
+		if (slotIndex == 0)
+		{
+			helmetSpriteRenderer.sprite = newItem.icon;
+		}
+		if (slotIndex == 1)
+		{
+			legsSpriteRenderer.sprite = newItem.icon;
+		}
 		if (currentEquipment[slotIndex] != null)
 		{
 			oldItem = currentEquipment [slotIndex];
@@ -74,12 +89,14 @@ public class EquipmentManager : MonoBehaviour {
 			inventory.Add (oldItem);
 	
 		}
-		if (onEquipmentChanged != null)
+		if (onEquipmentChanged != null) 
 			onEquipmentChanged.Invoke(newItem, oldItem);
 
 		currentEquipment [slotIndex] = newItem;
-		weaponSpriteRenderer.sprite = newItem.icon;
-		Debug.Log(newItem.name + " equipped!");
+		
+		
+		
+		//Debug.Log(newItem.name + " equipped!");
 
 	}
 
@@ -90,9 +107,6 @@ public class EquipmentManager : MonoBehaviour {
 			inventory.Add(oldItem);
 				
 			currentEquipment [slotIndex] = null;
-			if (currentMeshes [slotIndex] != null) {
-				Destroy (currentMeshes [slotIndex].gameObject);
-			}
 
 
 			if (onEquipmentChanged != null)
@@ -102,11 +116,18 @@ public class EquipmentManager : MonoBehaviour {
 
 	
 	}
-
+	void EquipAllDefault()
+	{
+		foreach (Equipment e in defaultWear)
+		{
+			Equip(e);
+		}
+	}
 	void UnequipAll() {
 		for (int i = 0; i < currentEquipment.Length; i++) {
 			Unequip (i);
 		}
+		EquipAllDefault();
 	}
 #endregion
 

@@ -18,16 +18,21 @@ public class Enemy : Interactable
 	}
 	public override void Interact()
 	{
+		
 		//print("Interact");
 		CharacterCombat combatManager = Player.instance.playerCombatManager;
 		combatManager.Attack(stats);
 	}
 	void Die()
 	{
-		
-		Object.Instantiate(gold, gameObject.transform.position, Quaternion.identity);
+		Vector3 dropPositoin = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1);
+		if (gold != null) {
+			Object.Instantiate(gold, dropPositoin, Quaternion.identity);
+		}
 		Destroy(gameObject);
 	}
+
+
 
 	#endregion
 }

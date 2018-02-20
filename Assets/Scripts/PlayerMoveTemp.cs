@@ -6,11 +6,35 @@ using UnityEngine.EventSystems;
 
 public class PlayerMoveTemp : MonoBehaviour
 {
+
+	#region Singleton
+	public static PlayerMoveTemp instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = FindObjectOfType<PlayerMoveTemp>();
+			}
+			return _instance;
+		}
+	}
+	static PlayerMoveTemp _instance;
+
+	void Awake()
+	{
+		_instance = this;
+	}
+
+	#endregion
+
 	#region Variables
 	public float moveSpeed;
 	private Vector3 target;
-
+	CharacterStats cs;
+	PlayerStats ps;
 	public GameObject clickIndicate;
+	private Vector3 spawnPoint;
 
 	private float playerX;
 	private float playerY;
@@ -23,6 +47,8 @@ public class PlayerMoveTemp : MonoBehaviour
 
 	void Start()
 	{
+		ps = gameObject.GetComponent<PlayerStats>();
+		spawnPoint = transform.position;
 		target = transform.position;
 
 		//playerX = Mathf.Round(transform.position.x/(1));
@@ -55,6 +81,20 @@ public class PlayerMoveTemp : MonoBehaviour
 			Instantiate(clickIndicate, target, Quaternion.identity);
 		}
 		transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+	}
+	public void Respawn()
+	{
+		
+		transform.position = spawnPoint;
+		HealthManager.instance.Heal(1000);
+		if (ps != null)
+		{
+			ps.SetReadyToDie(1);
+		}
+		else {
+			Debug.Log("could not find playerStats");
+		}
+		
 	}
 
 	#endregion
