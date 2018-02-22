@@ -73,14 +73,20 @@ public class GameManager : MonoBehaviour {
 	public void LoadNextLevel (string calledFrom) {
 		switch (calledFrom)
 		{
-		case "Tim Level":
-			SceneManager.LoadScene ("Alecs Level");
+		case "Level 1":
+			SceneManager.LoadScene ("Level 2");
 			break;
-		case "Alecs Level":
-			SceneManager.LoadScene ("Level3");
+		case "Level 2":
+			SceneManager.LoadScene ("Level 3");
+			break;
+		case "Level 3":
+			SceneManager.LoadScene("Level 4");
+			break;
+		case "Level 4":
+			SceneManager.LoadScene("Boss level");
 			break;
 		default:
-			SceneManager.LoadScene ("Tim Level");
+			SceneManager.LoadScene ("Level 1");
 			break;
 		}
 	}
